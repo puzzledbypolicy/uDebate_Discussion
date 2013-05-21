@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AttachedFiles.Text" xml:space="preserve">
+    <value>Attached Files</value>
+  </data>
+  <data name="Cancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Collapse.Text" xml:space="preserve">
+    <value>Collapse</value>
+  </data>
+  <data name="Coordinator.Text" xml:space="preserve">
+    <value>Coordinator</value>
+  </data>
+  <data name="DescHelp.Text" xml:space="preserve">
+    <value>You must type some text in Description</value>
+  </data>
+  <data name="Description.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="EditModule.Text" xml:space="preserve">
+    <value>Edit Module</value>
+  </data>
+  <data name="ExpandThis.Text" xml:space="preserve">
+    <value>Expand This</value>
+  </data>
+  <data name="Issue.Text" xml:space="preserve">
+    <value>Issue</value>
+  </data>
+  <data name="LoggedIn.Text" xml:space="preserve">
+    <value>Υou must be logged in, in order to post!</value>
+  </data>
+  <data name="MsgChoose.Text" xml:space="preserve">
+    <value>Please choose a message to Post</value>
+  </data>
+  <data name="NoData.Text" xml:space="preserve">
+    <value>Sorry. No data found</value>
+  </data>
+  <data name="OpenedDate.Text" xml:space="preserve">
+    <value>Opened on</value>
+  </data>
+  <data name="Post.Text" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="Posts.Text" xml:space="preserve">
+    <value>Posts</value>
+  </data>
+  <data name="PostTitle.Text" xml:space="preserve">
+    <value>Post Title</value>
+  </data>
+  <data name="ReplyForm.Text" xml:space="preserve">
+    <value>Reply Form</value>
+  </data>
+  <data name="ResponseType.Text" xml:space="preserve">
+    <value>Response Type</value>
+  </data>
+  <data name="Save.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Subject.Text" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="SubjectHelp.Text" xml:space="preserve">
+    <value>You must type some text in Subject.</value>
+  </data>
+  <data name="Summary.Text" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="TotalPosts.Text" xml:space="preserve">
+    <value>Total Posts</value>
+  </data>
+  <data name="TypeHelp.Text" xml:space="preserve">
+    <value>You must choose a Type for your Post. </value>
+  </data>
+  <data name="User.Text" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="Views.Text" xml:space="preserve">
+    <value>Views</value>
+  </data>
+  <data name="Inactive.Text" xml:space="preserve">
+    <value>Inactive</value>
+  </data>
+  <data name="Alternative.Text" xml:space="preserve">
+    <value>Alternative</value>
+  </data>
+  <data name="Comment.Text" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="ConArgument.Text" xml:space="preserve">
+    <value>Con Argument</value>
+  </data>
+  <data name="ProArgument.Text" xml:space="preserve">
+    <value>Pro Argument</value>
+  </data>
+  <data name="Login.Text" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="PostBy.Text" xml:space="preserve">
+    <value>by</value>
+  </data>
+  <data name="Notification.Text" xml:space="preserve">
+    <value>Notify me</value>
+  </data>
+  <data name="NotificationHelp.Text" xml:space="preserve">
+    <value>If checked, you will receive an email when a new reply is posted to this thread.</value>
+  </data>
+  <data name="UnpublishedBody.Text" xml:space="preserve">
+    <value>We are sorry to inform you that your post in {0} has been unpublished due to violation of the &lt;a href="http://join.puzzledbypolicy.eu/en-Gb/terms.aspx"&gt;Terms and Conditions&lt;/a&gt; of Puzzled by Policy. &lt;br /&gt;&lt;br /&gt; Thanks,&lt;br /&gt; The pbp team</value>
+  </data>
+  <data name="UnpublishedSubject.Text" xml:space="preserve">
+    <value>Puzzled by Policy - Post unpublished</value>
+  </data>
+  <data name="Legend.Text" xml:space="preserve">
+    <value>Legend</value>
+  </data>
+  <data name="SendMessage.Text" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="Next.Text" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="ExpandAll.Text" xml:space="preserve">
+    <value>Expand all</value>
+  </data>
+  <data name="PrintAll.Text" xml:space="preserve">
+    <value>Print all</value>
+  </data>
+  <data name="Help.Text" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="minihComment.Text" xml:space="preserve">
+    <value>Post a Comment</value>
+  </data>
+  <data name="minihCommentBody.Text" xml:space="preserve">
+    <value>In order to post a comment and possibly attach a file, you have to select the specific
+            posting of the tree. At the end, an editor will be opened, where you can put the
+            Subject and the body and also the posting category (among the allowed ones). By
+            pressing "Submit" it is sent to the system, and it goes live immediately.</value>
+  </data>
+  <data name="minihDiscussion.Text" xml:space="preserve">
+    <value>Create a New Discussion</value>
+  </data>
+  <data name="minihDiscussionBody.Text" xml:space="preserve">
+    <value>By pressing "New Discussion" you can create a new issue under the same discussion
+            tree of the Thread. Attachments can be added by pressing "Attach a file" and then
+            Upload.</value>
+  </data>
+  <data name="minihHow.Text" xml:space="preserve">
+    <value>How to ...</value>
+  </data>
+  <data name="minihLogin.Text" xml:space="preserve">
+    <value>Login or Register</value>
+  </data>
+  <data name="minihLoginBody.Text" xml:space="preserve">
+    <value>Click the Register button at the top of the page.
+            &lt;br /&gt;
+            1) If you have a Facebook account, then click at the Facebook login button. This
+            will automatically synchronise your account settings and your Facebook login details
+            will serve as your login details for PbP.
+            &lt;br /&gt;
+            2) If you do not want to use your Facebook account or if you do not have one, press
+            on the Register button, follow the instructions and create your PbP account.</value>
+  </data>
+  <data name="Close.Text" xml:space="preserve">
+    <value>Close</value>
+  </data>
+</root>

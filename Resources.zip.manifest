@@ -1,0 +1,316 @@
+﻿<dotnetnuke type="ResourceFile" version="5.0">
+  <files>
+    <file>
+      <path />
+      <name>alter_icon.gif</name>
+    </file>
+    <file>
+      <path />
+      <name>alter_icon_off.gif</name>
+    </file>
+    <file>
+      <path />
+      <name>alter_icon_on.gif</name>
+    </file>
+    <file>
+      <path />
+      <name>answer_icon.gif</name>
+    </file>
+    <file>
+      <path />
+      <name>answer_icon_off.gif</name>
+    </file>
+    <file>
+      <path />
+      <name>answer_icon_on.gif</name>
+    </file>
+    <file>
+      <path />
+      <name>arrow.png</name>
+    </file>
+    <file>
+      <path />
+      <name>breadStart.png</name>
+    </file>
+    <file>
+      <path />
+      <name>breadStartEnd.png</name>
+    </file>
+    <file>
+      <path />
+      <name>breadThreadEnd.png</name>
+    </file>
+    <file>
+      <path />
+      <name>breadTopic.png</name>
+    </file>
+    <file>
+      <path />
+      <name>breadTopicEnd.png</name>
+    </file>
+    <file>
+      <path />
+      <name>comments_icon.gif</name>
+    </file>
+    <file>
+      <path />
+      <name>comments_icon_off.gif</name>
+    </file>
+    <file>
+      <path />
+      <name>comments_icon_on.gif</name>
+    </file>
+    <file>
+      <path />
+      <name>con_icon.gif</name>
+    </file>
+    <file>
+      <path />
+      <name>con_icon_off.gif</name>
+    </file>
+    <file>
+      <path />
+      <name>con_icon_on.gif</name>
+    </file>
+    <file>
+      <path />
+      <name>Edit.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>expand.png</name>
+    </file>
+    <file>
+      <path />
+      <name>header1a.gif</name>
+    </file>
+    <file>
+      <path />
+      <name>header1b.gif</name>
+    </file>
+    <file>
+      <path />
+      <name>help-close.png</name>
+    </file>
+    <file>
+      <path />
+      <name>help-next.png</name>
+    </file>
+    <file>
+      <path />
+      <name>help.png</name>
+    </file>
+    <file>
+      <path />
+      <name>hotness.png</name>
+    </file>
+    <file>
+      <path />
+      <name>hotTh.png</name>
+    </file>
+    <file>
+      <path />
+      <name>issue_icon.gif</name>
+    </file>
+    <file>
+      <path />
+      <name>issue_icon_off.gif</name>
+    </file>
+    <file>
+      <path />
+      <name>issue_icon_on.gif</name>
+    </file>
+    <file>
+      <path />
+      <name>module.css</name>
+    </file>
+    <file>
+      <path />
+      <name>postviewHeader.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>postviewHeader.png</name>
+    </file>
+    <file>
+      <path />
+      <name>print.png</name>
+    </file>
+    <file>
+      <path />
+      <name>printBg440.png</name>
+    </file>
+    <file>
+      <path />
+      <name>printBg490.png</name>
+    </file>
+    <file>
+      <path />
+      <name>printBg940.png</name>
+    </file>
+    <file>
+      <path />
+      <name>printPost.png</name>
+    </file>
+    <file>
+      <path />
+      <name>pro_icon.gif</name>
+    </file>
+    <file>
+      <path />
+      <name>pro_icon_off.gif</name>
+    </file>
+    <file>
+      <path />
+      <name>pro_icon_on.gif</name>
+    </file>
+    <file>
+      <path />
+      <name>radioPad.png</name>
+    </file>
+    <file>
+      <path />
+      <name>Settings.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>stats.png</name>
+    </file>
+    <file>
+      <path />
+      <name>step1.png</name>
+    </file>
+    <file>
+      <path />
+      <name>step2.png</name>
+    </file>
+    <file>
+      <path />
+      <name>step3.png</name>
+    </file>
+    <file>
+      <path />
+      <name>s_attachment.png</name>
+    </file>
+    <file>
+      <path />
+      <name>ThreadsPostsTreeViewSummary.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>title940.png</name>
+    </file>
+    <file>
+      <path />
+      <name>topic.png</name>
+    </file>
+    <file>
+      <path />
+      <name>TopImage.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>TopImage.png</name>
+    </file>
+    <file>
+      <path />
+      <name>top_back.png</name>
+    </file>
+    <file>
+      <path />
+      <name>top_back1.png</name>
+    </file>
+    <file>
+      <path />
+      <name>treeHeader.jpg</name>
+    </file>
+    <file>
+      <path />
+      <name>treeHeader.png</name>
+    </file>
+    <file>
+      <path />
+      <name>users.png</name>
+    </file>
+    <file>
+      <path />
+      <name>View.ascx</name>
+    </file>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>Edit.ascx.resx</name>
+    </file>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>Settings.ascx.resx</name>
+    </file>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>View.ascx.el-GR.resx</name>
+    </file>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>View.ascx.en-GB.resx</name>
+    </file>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>View.ascx.es-ES.resx</name>
+    </file>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>View.ascx.hu-HU.resx</name>
+    </file>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>View.ascx.it-IT.resx</name>
+    </file>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>View.ascx.resx</name>
+    </file>
+    <file>
+      <path>Components/</path>
+      <name>jquery.easytabs.min.js</name>
+    </file>
+    <file>
+      <path>Controls/</path>
+      <name>AttachmentControl.ascx</name>
+    </file>
+    <file>
+      <path>Controls/</path>
+      <name>ForumBreadcrumb.ascx</name>
+    </file>
+    <file>
+      <path>Controls/App_LocalResources/</path>
+      <name>ForumBreadcrumb.ascx.el-GR.resx</name>
+    </file>
+    <file>
+      <path>Controls/App_LocalResources/</path>
+      <name>ForumBreadcrumb.ascx.en-GB.resx</name>
+    </file>
+    <file>
+      <path>Controls/App_LocalResources/</path>
+      <name>ForumBreadcrumb.ascx.es-ES.resx</name>
+    </file>
+    <file>
+      <path>Controls/App_LocalResources/</path>
+      <name>ForumBreadcrumb.ascx.hu-HU.resx</name>
+    </file>
+    <file>
+      <path>Controls/App_LocalResources/</path>
+      <name>ForumBreadcrumb.ascx.it-IT.resx</name>
+    </file>
+    <file>
+      <path>Controls/App_LocalResources/</path>
+      <name>ForumBreadcrumb.ascx.resx</name>
+    </file>
+    <file>
+      <path>Documentation/</path>
+      <name>Documentation.css</name>
+    </file>
+    <file>
+      <path>Documentation/</path>
+      <name>Documentation.html</name>
+    </file>
+  </files>
+</dotnetnuke>

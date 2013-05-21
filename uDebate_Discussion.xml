@@ -1,0 +1,1178 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>uDebate_Discussion</name>
+    </assembly>
+    <members>
+        <member name="T:DotNetNuke.Modules.uDebate_Discussion.Components.AttachmentController">
+            <summary>
+            CRUD (and all db methods) Attachment Methods
+            </summary>
+            <remarks>Added by Skeel</remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.uDebate_Discussion.Components.AttachmentController.#ctor">
+            <summary>
+            Instantiats the AttachmentContoller. 
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.uDebate_Discussion.Components.AttachmentController.GetAllByPostID(System.Int32)">
+            <summary>
+            Gets a list of AttachmentInfo related to a Post
+            </summary>
+            <param name="PostID"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.uDebate_Discussion.Components.AttachmentController.GetAllByUserID(System.Int32)">
+            <summary>
+            Gets a list of AttachmentInfo related to a UserId and NOT related to any posts
+            </summary>
+            <param name="UserID"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.uDebate_Discussion.Components.AttachmentController.Update(DotNetNuke.Modules.uDebate_Discussion.Components.AttachmentInfo)">
+            <summary>
+            Adds an AttachmentInfo object
+            </summary>
+            <param name="objAttachment"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.uDebate_Discussion.Components.AttachmentController.FillAttachmentInfo(System.Data.IDataReader)">
+            <summary>
+            Hydrates the AttachmentInfo object
+            </summary>
+            <param name="dr"></param>
+            <returns></returns>
+            <remarks>
+            </remarks>
+            <history>
+            	[skeel]	12/22/2008	Created
+            </history>
+        </member>
+        <member name="T:DotNetNuke.Modules.uDebate_Discussion.Components.AttachmentInfo">
+            <summary>
+            A single instance of the AttachmentInfo Object.
+            </summary>
+            <remarks>Added by Skeel</remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.uDebate_Discussion.Components.AttachmentInfo.FormatBytes(System.Int32)">
+            <summary>
+            Formats an integer value presumed as bytes to bytes/KB/MB/GB
+            </summary>
+            <param name="Bytes"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Components.AttachmentInfo.AttachmentID">
+            <summary>
+            The PK AttachmentID associated with the file.
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Components.AttachmentInfo.FileID">
+            <summary>
+            The DotNetNuke FileID.
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks>All attachments must be part of the DNN File system.</remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Components.AttachmentInfo.PostID">
+            <summary>
+            The PostID the attachment is associated with.
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Components.AttachmentInfo.UserID">
+            <summary>
+            UserID - we need this to collect "lost" attachments
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Components.AttachmentInfo.LocalFileName">
+            <summary>
+            LocalFileName - Used for the user to identify the file uploaded
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Components.AttachmentInfo.FileName">
+            <summary>
+            FileName - Actual FileName from DNN Files (generated through the GUID model)
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Components.AttachmentInfo.Extension">
+            <summary>
+            Extension - We use this display either image or link depending of extension
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Components.AttachmentInfo.Size">
+            <summary>
+            Size - File size in bytes
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Components.AttachmentInfo.Inline">
+            <summary>
+            Inline will return true, if the attachment is to be placed inline the postbody
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Components.AttachmentInfo.Width">
+            <summary>
+            Width (Will only apply for image files)
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Components.AttachmentInfo.Height">
+            <summary>
+            Height (Will only apply for image files)
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Components.AttachmentInfo.FormattedSize">
+            <summary>
+            FormattedSize - File size in bytes
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="T:DotNetNuke.Modules.uDebate.Components.FeatureController">
+            -----------------------------------------------------------------------------
+            <summary>
+            The Controller class for uDebate
+            </summary>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="M:DotNetNuke.Modules.uDebate.Components.FeatureController.ExportModule(System.Int32)">
+            -----------------------------------------------------------------------------
+            <summary>
+            ExportModule implements the IPortable ExportModule Interface
+            </summary>
+            <param name="ModuleID">The Id of the module to be exported</param>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="M:DotNetNuke.Modules.uDebate.Components.FeatureController.ImportModule(System.Int32,System.String,System.String,System.Int32)">
+            -----------------------------------------------------------------------------
+            <summary>
+            ImportModule implements the IPortable ImportModule Interface
+            </summary>
+            <param name="ModuleID">The Id of the module to be imported</param>
+            <param name="Content">The content to be imported</param>
+            <param name="Version">The version of the module to be imported</param>
+            <param name="UserId">The Id of the user performing the import</param>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="M:DotNetNuke.Modules.uDebate.Components.FeatureController.GetSearchItems(DotNetNuke.Entities.Modules.ModuleInfo)">
+            -----------------------------------------------------------------------------
+            <summary>
+            GetSearchItems implements the ISearchable Interface
+            </summary>
+            <param name="ModInfo">The ModuleInfo for the module to be Indexed</param>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="M:DotNetNuke.Modules.uDebate.Components.FeatureController.UpgradeModule(System.String)">
+            -----------------------------------------------------------------------------
+            <summary>
+            UpgradeModule implements the IUpgradeable Interface
+            </summary>
+            <param name="Version">The current version of the module</param>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="T:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl">
+            <summary>
+            A subcontrol used to upload, display and select Attachments 
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl.Page_Init(System.Object,System.EventArgs)">
+            <summary>
+            When the control is loaded, we want to make sure the cmdUpload is registered for postback because of the nature of the file upload control and security. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl.Page_Load(System.Object,System.EventArgs)">
+            <summary>
+            When the control is loaded, we want to make sure the cmdUpload is registered for postback because of the nature of the file upload control and security. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl.cmdUpload_Click(System.Object,System.EventArgs)">
+            <summary>
+            This uploads a file which generates a GUID name, uses original image extension as save type. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl.cmdDelete_Click(System.Object,System.Web.UI.ImageClickEventArgs)">
+            <summary>
+            Deletes the selected uploaded file, using the DNN filesystem 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl.LoadInitialView">
+            <summary>
+            This runs only the first time the control is loaded via Ajax. 
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl.BindFileList">
+            <summary>
+            Binds a list of files to a drop down list. 
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl.pnlContainer">
+            <summary>
+            pnlContainer control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl.tblAttachment">
+            <summary>
+            tblAttachment control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl.lstAttachments">
+            <summary>
+            lstAttachments control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl.cmdDelete">
+            <summary>
+            cmdDelete control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl.fuFile">
+            <summary>
+            fuFile control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl.cmdUpload">
+            <summary>
+            cmdUpload control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl.lblMessage">
+            <summary>
+            lblMessage control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl.LocalResourceFile">
+            <summary>
+            Local Resource file for localization. 
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl.PostId">
+            <summary>
+            PostId
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl.Width">
+            <summary>
+            Width
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl.lstAttachmentIDs">
+            <summary>
+            A list of attachmentid's bound to the control.
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl.BaseFolder">
+            <summary>
+            Post portal root folder path setting.
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl.ModuleID">
+            <summary>
+            We need the ModuleID set so we can get configuration settings for the avatar control. 
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl.EditorMode">
+            <summary>
+            Used to identify if the RichEditor Mode has been changed
+            </summary>
+            <value></value>
+            <returns>RICH/BASIC/""</returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl.DeleteItems">
+            <summary>
+            DeleteItems Are Used to Delete files while not being locked
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Controls.AttachmentControl.CurrentUserID">
+            <summary>
+            The userid of the person currently using this control. 
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Controls.ForumBreadcrumb.Breadcrumb">
+            <summary>
+            Breadcrumb control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Controls.ForumBreadcrumb.CurrentModuleId">
+            <summary>
+            PostId
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="T:DotNetNuke.Modules.uDebate_Discussion.Data.DataProvider">
+            -----------------------------------------------------------------------------
+            <summary>
+            An abstract class for the data access layer
+            </summary>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Data.DataProvider.ConnectionString">
+            <summary>
+            The connection string used by our data provider.
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Data.DataProvider.ProviderPath">
+            <summary>
+            The path of our data provider.
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Data.DataProvider.ObjectQualifier">
+            <summary>
+            The object qualifier used for the provider (ie. dnn_).
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.uDebate_Discussion.Data.DataProvider.DatabaseOwner">
+            <summary>
+            The database owner used for the provider (ie. dbo). 
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="T:DotNetNuke.Modules.uDebate_Discussion.Data.SqlDataProvider">
+            -----------------------------------------------------------------------------
+            <summary>
+            SQL Server implementation of the abstract DataProvider class
+            </summary>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="T:DotNetNuke.Modules.uDebate_Discussion.Edit">
+            -----------------------------------------------------------------------------
+            <summary>
+            The EdituDebate class is used to manage content
+            </summary>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Edit.lbTitle">
+            <summary>
+            lbTitle control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Edit.btnNew">
+            <summary>
+            btnNew control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Edit.btnDelete">
+            <summary>
+            btnDelete control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Edit.lblMessage">
+            <summary>
+            lblMessage control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Edit.lbActive">
+            <summary>
+            lbActive control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Edit.chkActive">
+            <summary>
+            chkActive control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Edit.Label1">
+            <summary>
+            Label1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Edit.chkEuropean">
+            <summary>
+            chkEuropean control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Edit.lblPosition">
+            <summary>
+            lblPosition control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Edit.dropDownPosition">
+            <summary>
+            dropDownPosition control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Edit.lbDescription">
+            <summary>
+            lbDescription control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Edit.txtDescription">
+            <summary>
+            txtDescription control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Edit.lbSubtitle">
+            <summary>
+            lbSubtitle control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Edit.txtSubtitle">
+            <summary>
+            txtSubtitle control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Edit.lblText">
+            <summary>
+            lblText control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Edit.txtThread">
+            <summary>
+            txtThread control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Edit.lblMoveThread">
+            <summary>
+            lblMoveThread control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Edit.ddMoveThread">
+            <summary>
+            ddMoveThread control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Edit.btnSave">
+            <summary>
+            btnSave control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.Edit.btnCancel">
+            <summary>
+            btnCancel control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.uDebate_Discussion.Edit.Page_Load(System.Object,System.EventArgs)">
+            -----------------------------------------------------------------------------
+            <summary>
+            Page_Load runs when the control is loaded
+            </summary>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="T:DotNetNuke.Modules.uDebate_Discussion.Settings">
+            <summary>
+            Settings class.
+            </summary>
+            <remarks>
+            Auto-generated class.
+            </remarks>
+            -----------------------------------------------------------------------------
+            <summary>
+            The Settings class manages Module Settings
+            </summary>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="M:DotNetNuke.Modules.uDebate_Discussion.Settings.LoadSettings">
+            -----------------------------------------------------------------------------
+            <summary>
+            LoadSettings loads the settings from the Database and displays them
+            </summary>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="M:DotNetNuke.Modules.uDebate_Discussion.Settings.UpdateSettings">
+            -----------------------------------------------------------------------------
+            <summary>
+            UpdateSettings saves the modified settings to the Database
+            </summary>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.ThreadsPostsTreeViewSummary.lbThreadTitle">
+            <summary>
+            lbThreadTitle control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.ThreadsPostsTreeViewSummary.TreeView1">
+            <summary>
+            TreeView1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.ThreadsPostsTreeViewSummary.TotalPosts">
+            <summary>
+            TotalPosts control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.ThreadsPostsTreeViewSummary.TotalUsers">
+            <summary>
+            TotalUsers control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.ThreadsPostsTreeViewSummary.NotesLabel">
+            <summary>
+            NotesLabel control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.ThreadsPostsTreeViewSummary.txtNotesEditor">
+            <summary>
+            txtNotesEditor control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.ThreadsPostsTreeViewSummary.HideEditorBtn">
+            <summary>
+            HideEditorBtn control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.ThreadsPostsTreeViewSummary.SaveNotesBtn">
+            <summary>
+            SaveNotesBtn control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="T:DotNetNuke.Modules.uDebate_Discussion.View">
+            -----------------------------------------------------------------------------
+            <summary>
+            The ViewuDebate_Discussion class displays the content
+            </summary>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.ctlBreadcrump">
+            <summary>
+            ctlBreadcrump control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.ThreadDetails">
+            <summary>
+            ThreadDetails control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.TotalPostsLbl">
+            <summary>
+            TotalPostsLbl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.statusLbl">
+            <summary>
+            statusLbl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.newDiscussionBtn">
+            <summary>
+            newDiscussionBtn control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.printLink">
+            <summary>
+            printLink control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.expandLink">
+            <summary>
+            expandLink control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.notifyCheck">
+            <summary>
+            notifyCheck control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.label">
+            <summary>
+            label control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.cmdHelp">
+            <summary>
+            cmdHelp control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.notifyLabel">
+            <summary>
+            notifyLabel control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.lblNoHelpLabel">
+            <summary>
+            lblNoHelpLabel control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.pnlHelp">
+            <summary>
+            pnlHelp control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.lblHelp">
+            <summary>
+            lblHelp control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.threadSummaryBtn">
+            <summary>
+            threadSummaryBtn control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.EditLink">
+            <summary>
+            EditLink control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.legendIssueImg">
+            <summary>
+            legendIssueImg control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.legendIssueLbl">
+            <summary>
+            legendIssueLbl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.legendAltImg">
+            <summary>
+            legendAltImg control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.legendAltLbl">
+            <summary>
+            legendAltLbl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.legendProImg">
+            <summary>
+            legendProImg control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.legendProLbl">
+            <summary>
+            legendProLbl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.legendConImg">
+            <summary>
+            legendConImg control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.legendConLbl">
+            <summary>
+            legendConLbl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.legendCommentImg">
+            <summary>
+            legendCommentImg control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.legendCommentLbl">
+            <summary>
+            legendCommentLbl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.helpLbl">
+            <summary>
+            helpLbl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.needLoginLblTop">
+            <summary>
+            needLoginLblTop control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.DebateList">
+            <summary>
+            DebateList control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.needLoginLblBottom">
+            <summary>
+            needLoginLblBottom control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.howtoLbl">
+            <summary>
+            howtoLbl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.help1Lbl">
+            <summary>
+            help1Lbl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.help2Lbl">
+            <summary>
+            help2Lbl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.help3Lbl">
+            <summary>
+            help3Lbl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.help1Image">
+            <summary>
+            help1Image control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.help1">
+            <summary>
+            help1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.Label1">
+            <summary>
+            Label1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.firstLink">
+            <summary>
+            firstLink control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.Image2">
+            <summary>
+            Image2 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.Label2">
+            <summary>
+            Label2 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.Label3">
+            <summary>
+            Label3 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.secondLink">
+            <summary>
+            secondLink control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.Image3">
+            <summary>
+            Image3 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.Label4">
+            <summary>
+            Label4 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.Label5">
+            <summary>
+            Label5 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.SqluDebatePosts">
+            <summary>
+            SqluDebatePosts control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.uDebate_Discussion.View.SqluDebateThread">
+            <summary>
+            SqluDebateThread control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+    </members>
+</doc>

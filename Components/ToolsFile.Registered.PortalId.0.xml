@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+
+    <modules>
+        <module name="RadEditorStatistics" dockingZone="Bottom"/>
+    </modules>
+
+    <tools>
+        <tool name="Bold" shortcut="CTRL+B"/>
+        <tool name="Italic" shortcut="CTRL+I"/>
+        <tool name="Underline" shortcut="CTRL+U"/> 
+		<tool name="LinkManager" shortcut="CTRL+K"/>
+		<EditorTool Name="DocumentManager" />
+       </tools>
+</root>
+
