@@ -338,8 +338,7 @@
     <telerik:DnnTreeList ID="DebateList" runat="server" ShowOuterBorders="false" HeaderStyle-CssClass="hidden"
         BackColor="#f5f5f5" AllowSorting="true" GridLines="None" AlternatingItemStyle-CssClass="alternatingBorder"
         OnItemDataBound="DebateList_ItemDataBound" ShowTreeLines="false" OnInsertCommand="DebateList_InsertCommand"
-        EditMode="EditForms" OnItemCommand="DebateList_ItemCommand" OnItemInserted="DebateList_ItemInserted"
-        onDataBound="DebateList_DataBound" >
+        EditMode="EditForms" OnItemCommand="DebateList_ItemCommand"  >
         <DetailTemplate>
             <div>
                 <asp:HiddenField ID="hiddenPostID" runat="server" Value='<%#Eval("ID") %>' />
@@ -397,7 +396,7 @@
                 </div>
                 <div class="replyField" style="padding-left: 0px">
                     <telerik:DnnEditor ID="txtReply" runat="server" LocalizationPath="~/DesktopModules/Admin/RadEditorProvider/App_LocalResources" autodetectlanguage="true" DialogHandlerUrl="~/DesktopModules/Admin/RadEditorProvider/DialogHandler.aspx"
-                        ChooseMode="false" EditModes="Design,Preview" Height="200px" ContentAreaMode="Iframe"                        
+                        ChooseMode="false" EditModes="Design,Preview" Height="200px" ContentAreaMode="Iframe" StripFormattingOptions="MSWordRemoveAll"                         
                         DocumentManager-ViewPaths="~/Portals/0/UserAttachments" DocumentManager-UploadPaths="~/Portals/0/UserAttachments"
                         ToolbarMode="Default" Width="100%" ToolsFile="~/DesktopModules/uDebate_Discussion/Components/ToolsFile.Registered.PortalId.0.xml">
                     </telerik:DnnEditor>

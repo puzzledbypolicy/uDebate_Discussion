@@ -25,6 +25,7 @@ using System.Collections;
 using System.Configuration;
 using System.Data.SqlClient;
 using Telerik.Web.UI;
+using System.Threading;
 
 
 namespace DotNetNuke.Modules.uDebate_Discussion
@@ -37,6 +38,7 @@ namespace DotNetNuke.Modules.uDebate_Discussion
     public partial class View : uDebate_DiscussionModuleBase
     {
         private Logger log = new Logger();
+        private string Thread_ID;
 
         /* Change the title of the page to the title of the current thread.
          * Also used for facebook like button, which uses this as the title 
@@ -52,23 +54,24 @@ namespace DotNetNuke.Modules.uDebate_Discussion
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string ThreadID = ATC.Tools.URLParam("Thread");
+            Thread_ID = ATC.Tools.URLParam("Thread");
             string culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
 
             /* IF no topic is passed we redirect the user to the udebta start page*/
-            if (ThreadID.Equals(""))
+            if (Thread_ID.Equals(""))
             {
-                Response.Redirect(ConfigurationManager.AppSettings["DomainName"] + "/" + culture + "/udebate.aspx");
+                Response.Redirect(ConfigurationManager.AppSettings["DomainName"] + /*"/" + culture + */"/udebate.aspx");
             }
 
             Page.ClientScript.RegisterClientScriptInclude("hoverintent", ResolveUrl("~/Resources/Shared/Scripts/jquery/jquery.hoverIntent.min.js"));
             Page.ClientScript.RegisterClientScriptInclude("scroll", ResolveUrl("~/DesktopModules/uDebate_Discussion/Components/jquery.scrollTo-1.4.3.1-min.js"));
-            
-            log.AddInfo("loading discussion tree " + ThreadID);
+
+            log.AddInfo("loading discussion tree " + Thread_ID);
             ctlBreadcrump.CurrentModuleId = ModuleId.ToString();
             Page.MaintainScrollPositionOnPostBack = true;
 
-            LocalResourceFile = Localization.GetResourceFile(this, "View.ascx." + culture + ".resx");
+            /* uncomment for multilingual sites */
+            //LocalResourceFile = Localization.GetResourceFile(this, "View.ascx." + culture + ".resx");
 
             legendIssueImg.ImageUrl = "images/issue_icon.gif";
             legendIssueLbl.Text = Localization.GetString("Issue", LocalResourceFile);
@@ -81,9 +84,9 @@ namespace DotNetNuke.Modules.uDebate_Discussion
             legendCommentImg.ImageUrl = "images/comments_icon.gif";
             legendCommentLbl.Text = Localization.GetString("Comment", LocalResourceFile);
 
-            log.AddInfo("finished loading discussion tree " + ThreadID);
+            log.AddInfo("finished loading discussion tree " + Thread_ID);
 
-            printLink.Attributes.Add("onclick", "openTreeViewPrinter(" + ThreadID + ");return false;");
+            printLink.Attributes.Add("onclick", "openTreeViewPrinter(" + Thread_ID + ");return false;");
 
             string postAction = ATC.Tools.URLParam("PostAction").ToString();
             if (postAction != string.Empty && DotNetNuke.Security.PortalSecurity.IsInRoles("Pilot Leaders"))
@@ -96,15 +99,15 @@ namespace DotNetNuke.Modules.uDebate_Discussion
             }
             if (!IsPostBack)
             {
-                notifyCheck.Checked = checkUsedNotified(UserId.ToString(), ThreadID);
+                notifyCheck.Checked = checkUsedNotified(UserId.ToString(), Thread_ID);
                 IncViewCounter();
 
                 DebateList.DataKeyNames = new string[] { "ID" };
                 DebateList.ParentDataKeyNames = new string[] { "ParentID" };
                 DebateList.DataSourceID = "SqluDebatePosts";
                 DebateList.AutoGenerateColumns = false;
-                SqluDebatePosts.SelectParameters["ThreadID"].DefaultValue = ThreadID;
-                SqluDebateThread.SelectParameters["ThreadID"].DefaultValue = ThreadID;
+                SqluDebatePosts.SelectParameters["ThreadID"].DefaultValue = Thread_ID;
+                SqluDebateThread.SelectParameters["ThreadID"].DefaultValue = Thread_ID;
 
 
                 bool ThreadViewPermission = false;
@@ -164,7 +167,7 @@ namespace DotNetNuke.Modules.uDebate_Discussion
                 userIDColumn.Visible = false;
 
                 DebateList.ExpandedIndexes.Add(new TreeListHierarchyIndex { NestedLevel = 0, LevelIndex = 0 });
-                DataRow lastPost = getLatestPostOfThread(ThreadID);
+                DataRow lastPost = getLatestPostOfThread(Thread_ID);
 
                 if (lastPost != null)
                     FindAndSelectItem(Convert.ToInt32(lastPost["ID"]));                
@@ -270,8 +273,8 @@ namespace DotNetNuke.Modules.uDebate_Discussion
                     string notifyEmail = ATC.Database.sqlGetFirst(notifySQL);
 
                     string notifyBody = String.Format(Localization.GetString("UnpublishedBody", LocalResourceFile),
-                                        ConfigurationManager.AppSettings["DomainName"] + "/" +
-                                        System.Threading.Thread.CurrentThread.CurrentCulture.Name +
+                                        ConfigurationManager.AppSettings["DomainName"] + /*"/" +
+                                        System.Threading.Thread.CurrentThread.CurrentCulture.Name +*/
                                         "/udebatediscussion.aspx?Thread=" + ATC.Tools.IntURLParam("Thread"));
 
                     Mail.SendEmail("info@puzzledbypolicy", notifyEmail, Localization.GetString("UnpublishedSubject", LocalResourceFile),
@@ -394,20 +397,19 @@ namespace DotNetNuke.Modules.uDebate_Discussion
             if (Request.IsAuthenticated)//make sure user is logged in
             {
                 string userID = UserId.ToString();
-                string userEmail = UserInfo.Email;
-                string threadID = ATC.Tools.URLParam("Thread");
+                string userEmail = UserInfo.Email;               
 
                 if (notifyCheck.Checked)
                 {
                     String SQL = "INSERT INTO uDebate_Forum_Notifications (userID,threadID,userEmail,insertedOn) VALUES(" +
-                                userID + "," + threadID + ",'" + userEmail + "',getdate())";
+                                userID + "," + Thread_ID + ",'" + userEmail + "',getdate())";
                     ATC.Database.sqlExecuteCommand(SQL);
                     notifyCheck.Checked = true;
                 }
                 else
                 {
                     String SQL = "DELETE FROM uDebate_Forum_Notifications WHERE userID=" + userID +
-                                " AND threadID=" + threadID;
+                                " AND threadID=" + Thread_ID;
                     ATC.Database.sqlExecuteCommand(SQL);
                     notifyCheck.Checked = false;
                 }
@@ -620,7 +622,7 @@ namespace DotNetNuke.Modules.uDebate_Discussion
             }
 
             table["PostType"] = selection;
-            command.Parameters.AddWithValue("ThreadID", ATC.Tools.URLParam("Thread"));
+            command.Parameters.AddWithValue("ThreadID", Thread_ID);
             command.Parameters.AddWithValue("Subject", table["Subject"]);
             command.Parameters.AddWithValue("Message", table["Message"]);
             command.Parameters.AddWithValue("PostType", table["PostType"]);
@@ -647,66 +649,138 @@ namespace DotNetNuke.Modules.uDebate_Discussion
                     item.ParentItem.Expanded = true;
                     item.ParentItem.IsChildInserted = false;
                 }
-                DebateList.IsItemInserted = false;
+                DebateList.IsItemInserted = false;             
+
                 DebateList.Rebind();
+                DataRow lastPost = getLatestPostOfThread(Thread_ID);
+                if (lastPost != null)
+                    FindAndSelectItem(Convert.ToInt32(lastPost["ID"]));  
+               
             }
             finally
             {
                 conn.Close();
-
             }
-
-            String ThreadID = ATC.Tools.IntURLParam("Thread");
 
             string fromAddress = "info@puzzledbypolicy.eu";
-            string subject = "PuzzledByPolicy - New Post";
-            string body = "New post added at " + ConfigurationManager.AppSettings["DomainName"] + "/" +
-                    System.Threading.Thread.CurrentThread.CurrentCulture.Name +
-                    "/udebatediscussion.aspx?Thread=" + ThreadID;
+            string subject = "Puzzledbypolicy - New post";
+            string body = "New post added at " + ConfigurationManager.AppSettings["DomainName"] + /*"/" +
+                    System.Threading.Thread.CurrentThread.CurrentCulture.Name +*/
+                    "/udebatediscussion.aspx?Thread=" + Thread_ID;
+
+            SendTokenizedBulkEmail mailer = new SendTokenizedBulkEmail();           
 
             /* Notify moderators of the new post*/
-            switch (getPostLanguageByThread(ThreadID).ToLower())
+            switch (getPostLanguageByThread(Thread_ID).ToLower())
             {
-                case "el-gr": Mail.SendEmail(fromAddress, "i.giannakoudaki@daem.gr", subject, body);
-                    Mail.SendEmail(fromAddress, "l.kallipolitis@atc.gr", subject, body);
+                case "el-gr": 
+                     Entities.Users.UserInfo user = new Entities.Users.UserInfo();
+                     user.Email = "i.giannakoudaki@daem.gr";
+                     mailer.AddAddressedUser(user);  
+
                     break;
-                case "es-es": Mail.SendEmail(fromAddress, "enielsen@ull.es", subject, body);
-                    Mail.SendEmail(fromAddress, "cmartinv@ull.es", subject, body);
-                    Mail.SendEmail(fromAddress, "vzapata@ull.es", subject, body);
-                    Mail.SendEmail(fromAddress, "l.kallipolitis@atc.gr", subject, body);
+               /* case "es-es":
+                    Entities.Users.UserInfo user3 = new Entities.Users.UserInfo();
+                    user3.Email = "enielsen@ull.es";
+                     mailer.AddAddressedUser(user3);
+                     Entities.Users.UserInfo user4 = new Entities.Users.UserInfo();
+                    user4.Email = "cmartinv@ull.es";
+                     mailer.AddAddressedUser(user4);
+                     Entities.Users.UserInfo user5 = new Entities.Users.UserInfo();
+                     user5.Email = "vzapata@ull.es";
+                     mailer.AddAddressedUser(user5); 
                     break;
-                case "it-it": Mail.SendEmail(fromAddress, "stefano.moro@csi.it", subject, body);
-                    Mail.SendEmail(fromAddress, "l.kallipolitis@atc.gr", subject, body);
+                case "it-it":
+                    Entities.Users.UserInfo user7 = new Entities.Users.UserInfo();
+                    user7.Email = "stefano.moro@csi.it";
+                     mailer.AddAddressedUser(user7); 
                     break;
-                case "hu-hu": Mail.SendEmail(fromAddress, "Takacs.GyulaPeter@nisz.hu", subject, body);
-                    Mail.SendEmail(fromAddress, "l.kallipolitis@atc.gr", subject, body);
+                case "hu-hu": 
+                    Entities.Users.UserInfo user9 = new Entities.Users.UserInfo();
+                    user9.Email = "Takacs.GyulaPeter@nisz.hu";
+                     mailer.AddAddressedUser(user9); 
                     break;
-                case "en-gb": Mail.SendEmail(fromAddress, "matej.delakorda@inepa.si", subject, body);
-                    Mail.SendEmail(fromAddress, "mateja.delakorda@inepa.si", subject, body);
-                    Mail.SendEmail(fromAddress, "l.kallipolitis@atc.gr", subject, body);
-                    break;
-                default: Mail.SendEmail(fromAddress, "l.kallipolitis@atc.gr", subject, body);
-                    break;
+                case "en-gb":
+                    Entities.Users.UserInfo user11 = new Entities.Users.UserInfo();
+                    user11.Email = "matej.delakorda@inepa.si";
+                     mailer.AddAddressedUser(user11);
+                     Entities.Users.UserInfo user12 = new Entities.Users.UserInfo();
+                     user12.Email = "mateja.delakorda@inepa.si";
+                     mailer.AddAddressedUser(user12);
+                    break;*/
+                default:   break;
             }
+
+            Entities.Users.UserInfo user14 = new Entities.Users.UserInfo();
+            user14.Email = "l.kallipolitis@atc.gr";
+            mailer.AddAddressedUser(user14);
+           
+            mailer.Priority = DotNetNuke.Services.Mail.MailPriority.Normal;
+
+            mailer.AddressMethod = DotNetNuke.Services.Mail.SendTokenizedBulkEmail.AddressMethods.Send_TO;
+
+            Entities.Users.UserInfo senderUser = new Entities.Users.UserInfo();
+            senderUser.Email = "info@puzzledbypolicy.eu";
+
+            mailer.SendingUser = senderUser;
+
+            mailer.ReportRecipients = false;
+
+            mailer.Subject = subject;
+
+            mailer.Body = body;
+
+            mailer.BodyFormat = DotNetNuke.Services.Mail.MailFormat.Html;
+
+            Thread objThread = new Thread(mailer.Send);
+
+            objThread.Start();
 
             /* Send an email to all the subscribed users of this thread*/
             string subjectNotify = "PuzzledByPolicy - There is a new post in the thread you are following";
             string bodyNotify = "Hi, <br /><br />A new post was added at " + ConfigurationManager.AppSettings["DomainName"]
-                    + "/" + System.Threading.Thread.CurrentThread.CurrentCulture.Name +
-                    "/udebatediscussion.aspx?Thread=" + ThreadID;
+                    /*+ "/" + System.Threading.Thread.CurrentThread.CurrentCulture.Name */+
+                    "/udebatediscussion.aspx?Thread=" + Thread_ID;
 
-            string SQL_notified = "SELECT userID,userEmail FROM uDebate_Forum_Notifications where threadID=" + ThreadID;
+            string SQL_notified = "SELECT userID,userEmail FROM uDebate_Forum_Notifications where threadID=" + Thread_ID;
             try
             {
                 DataSet ds = ATC.Database.sqlExecuteDataSet(SQL_notified);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
+                    SendTokenizedBulkEmail notificationMailer = new SendTokenizedBulkEmail();
+
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
                         // Only send email to users different than the current one (the post writer)
                         if (UserId != Int32.Parse(row["userID"].ToString()))
-                            Mail.SendEmail(fromAddress, row["userEmail"].ToString(), subjectNotify, bodyNotify);
+                        {
+                            Entities.Users.UserInfo newUser = new Entities.Users.UserInfo();
+                            newUser.Email = row["userEmail"].ToString();
+                            notificationMailer.AddAddressedUser(newUser);
+                        }                          
                     }
+
+                    notificationMailer.Priority = DotNetNuke.Services.Mail.MailPriority.Normal;
+
+                    notificationMailer.AddressMethod = DotNetNuke.Services.Mail.SendTokenizedBulkEmail.AddressMethods.Send_TO;
+
+                    Entities.Users.UserInfo sendingUser = new Entities.Users.UserInfo();
+                    sendingUser.Email = "info@puzzledbypolicy.eu";
+
+                    notificationMailer.SendingUser = sendingUser;
+
+                    notificationMailer.ReportRecipients = true;
+
+                    notificationMailer.Subject = subjectNotify;
+
+                    notificationMailer.Body = bodyNotify;
+
+                    notificationMailer.BodyFormat = DotNetNuke.Services.Mail.MailFormat.Html;
+
+                    Thread objThread1 = new Thread(notificationMailer.Send);
+
+                    objThread1.Start();
                 }
             }
             catch (Exception ex)
@@ -716,15 +790,6 @@ namespace DotNetNuke.Modules.uDebate_Discussion
         }
 
 
-        protected void DebateList_ItemInserted(object sender, TreeListInsertedEventArgs e)
-        {
-            foreach (TreeListDataItem item in DebateList.GetItems(TreeListItemType.Item))
-            {
-                item.Edit = false;
-                item.IsChildInserted = false;
-            }
-            DebateList.Rebind();
-        }
         protected void ThreadDetails_DataBound(object sender, EventArgs e)
         {
             if (Request.IsAuthenticated)
@@ -744,8 +809,8 @@ namespace DotNetNuke.Modules.uDebate_Discussion
 
                     EditLink.NavigateUrl = ConfigurationManager.AppSettings["DomainName"] + "/tabid/" +
                             PortalSettings.ActiveTab.TabID + "/ctl/Edit/mid/" + ModuleId +
-                           "/TopicID/" + TopicId + "/ThreadID/" + ATC.Tools.URLParam("Thread") +
-                           "/language/" + culture + "/default.aspx";
+                           "/TopicID/" + TopicId + "/ThreadID/" + Thread_ID +
+                           /*"/language/" + culture +*/ "/default.aspx";
                     EditLink.ImageUrl = ATC.Tools.GetParam("RootURL") + "Images/manage-icn.png";
                     EditLink.Attributes.Add("onclick", "return " + UrlUtils.PopUpUrl(EditLink.NavigateUrl, this, PortalSettings, true, false));
                     EditLink.Visible = true;
@@ -758,8 +823,8 @@ namespace DotNetNuke.Modules.uDebate_Discussion
                         threadSummaryBtn.Visible = true;
                         threadSummaryBtn.NavigateUrl = ConfigurationManager.AppSettings["DomainName"] + "/tabid/" +
                                 PortalSettings.ActiveTab.TabID + "/ctl/TreeViewSummary/mid/" + ModuleId +
-                                "/ThreadID/" + ATC.Tools.URLParam("Thread") +
-                                "/language/" + culture + "/uDebate.aspx";
+                                "/ThreadID/" + Thread_ID +
+                                /*"/language/" + culture + */"/uDebate.aspx";
                     }
                 }
             }
@@ -776,10 +841,6 @@ namespace DotNetNuke.Modules.uDebate_Discussion
             creatorLbl.NavigateUrl = DotNetNuke.Common.Globals.UserProfileURL(Convert.ToInt32(userID.Value));
         }
 
-        protected void DebateList_DataBound(object sender, EventArgs e)
-        {
-           
-        }
 
         public DataRow getLatestPostOfThread(string threadID)
         {

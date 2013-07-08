@@ -14,15 +14,15 @@ namespace DotNetNuke.Modules.uDebate_Discussion.Controls
 
         protected void Page_Load(object sender, System.EventArgs e)
         {
-            LocalResourceFile = Localization.GetResourceFile(this, "ForumBreadcrumb.ascx." +
-                System.Threading.Thread.CurrentThread.CurrentCulture.Name + ".resx");
+            LocalResourceFile = Localization.GetResourceFile(this, "ForumBreadcrumb.ascx" +
+                /*System.Threading.Thread.CurrentThread.CurrentCulture.Name + */".resx");
 
             string literal = "" + Localization.GetString("breadStart", LocalResourceFile) +
 
              ": <a href='" +
-             ConfigurationManager.AppSettings["DomainName"] + "/" + System.Threading.Thread.CurrentThread.CurrentCulture.Name +
+             ConfigurationManager.AppSettings["DomainName"] /*+ "/" + System.Threading.Thread.CurrentThread.CurrentCulture.Name*/ +
 
-             "/uDebate.aspx' class='bread_link'>" + Localization.GetString("debateStart", LocalResourceFile) + "</a>";
+             "/udebate.aspx' class='bread_link'>" + Localization.GetString("debateStart", LocalResourceFile) + "</a>";
 
             if (Topic != string.Empty)
             {
@@ -53,8 +53,8 @@ namespace DotNetNuke.Modules.uDebate_Discussion.Controls
                 string TopicDesc = threadRow["TopicDesc"].ToString();
                 string ThreadDesc = threadRow["ThreadDesc"].ToString();
 
-                literal += " > <a href='" + ConfigurationManager.AppSettings["DomainName"] + "/" +
-                           System.Threading.Thread.CurrentThread.CurrentCulture.Name + 
+                literal += " > <a href='" + ConfigurationManager.AppSettings["DomainName"] /*+ "/" +
+                           System.Threading.Thread.CurrentThread.CurrentCulture.Name */+ 
                            "/udebatethreads.aspx?TopicID=" + threadRow["TopicID"].ToString()+                           
                            "' class='bread_link'>" + TruncateAtWord(TopicDesc, 50) + "</a>";
 

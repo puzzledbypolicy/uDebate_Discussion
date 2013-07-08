@@ -849,6 +849,11 @@ a.disc_en-GB:link
     background: url(images/buttons/new_discussion_en-GB.png) no-repeat center center;
 }
 
+a.disc_en-US:link
+{
+    background: url(images/buttons/new_discussion_en-US.png) no-repeat center center;
+}
+
 
 a.disc_el-GR:hover
 {
@@ -873,6 +878,11 @@ a.disc_hu-HU:hover
 a.disc_en-GB:hover
 {
     background: url(images/buttons/new_discussion_en-GB_sel.png) no-repeat center center;
+}
+
+a.disc_en-US:hover
+{
+    background: url(images/buttons/new_discussion_en-US_sel.png) no-repeat center center;
 }
 
 
