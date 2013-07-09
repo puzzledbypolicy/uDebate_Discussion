@@ -72,6 +72,16 @@
                     <viewOrder>0</viewOrder>
                   </moduleControl>
                   <moduleControl>
+                    <controlKey>TreeViewSummary</controlKey>                    
+                    <controlSrc>DesktopModules/uDebate_Discussion/ThreadsPostsTreeViewSummary.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>TreeViewSummary</controlTitle>
+                    <controlType>View</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                  <moduleControl>
                     <controlKey>Edit</controlKey>
                     <controlSrc>DesktopModules/uDebate_Discussion/Edit.ascx</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
@@ -98,7 +108,7 @@
         </component>
         <component type="Assembly">
           <assemblies>
-            <basePath>bin</basePath>
+            <basePath>../../bin</basePath>
             <assembly>
               <name>uDebate_Discussion.dll</name>
             </assembly>

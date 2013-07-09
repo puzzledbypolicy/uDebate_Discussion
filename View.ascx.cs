@@ -792,8 +792,8 @@ namespace DotNetNuke.Modules.uDebate_Discussion
 
         protected void ThreadDetails_DataBound(object sender, EventArgs e)
         {
-            if (Request.IsAuthenticated)
-            {
+            /*if (Request.IsAuthenticated)
+            {*/
                 string culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
                 newDiscussionBtn.Visible = true;
                 newDiscussionBtn.CssClass = "newDiscussion disc_" + culture;
@@ -827,7 +827,7 @@ namespace DotNetNuke.Modules.uDebate_Discussion
                                 /*"/language/" + culture + */"/uDebate.aspx";
                     }
                 }
-            }
+            /*}*/
             /* If status is not null then the thread has posts >0 so we update the fields accordingly */
             String Status = "";
             HiddenField hiddenstatus = (HiddenField)((DetailsView)sender).FindControl("Status");
