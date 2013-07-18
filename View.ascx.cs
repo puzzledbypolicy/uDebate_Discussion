@@ -551,27 +551,27 @@ namespace DotNetNuke.Modules.uDebate_Discussion
                 if (e.Item is TreeListDetailTemplateItem)
                 {
                     TreeListDetailTemplateItem itm = e.Item as TreeListDetailTemplateItem;
-                  /*  if (!Request.IsAuthenticated)
+                    if (!Request.IsAuthenticated)
                     {
                         needLoginLblTop.Visible = true;
                         needLoginLblBottom.Visible = true;
                         needLoginLblTop.Text = "<div class='dnnFormMessage dnnFormWarning'>" +
                             Localization.GetString("LoggedIn", LocalResourceFile) +
-                         "  <a href='" + ConfigurationManager.AppSettings["DomainName"] + "/" +
-                         System.Threading.Thread.CurrentThread.CurrentCulture.Name +
-                         "/loginpage.aspx?returnurl=" + HttpUtility.UrlEncode(Request.Url.PathAndQuery) + "'>" +
+                         "  <a href='" + ConfigurationManager.AppSettings["DomainName"] + /*"/" +
+                         System.Threading.Thread.CurrentThread.CurrentCulture.Name +*/
+                         "/login.aspx?returnurl=" + HttpUtility.UrlEncode(Request.Url.PathAndQuery) + "'>" +
                          Localization.GetString("Login", LocalResourceFile) + "</a></div>";
                         needLoginLblBottom.Text = needLoginLblTop.Text;
                     }
                     else
-                    {*/
+                    {
                         itm.CssClass = "whiteBack";
                         LinkButton newPostBtn = (LinkButton)itm.FindControl("newPostBtn");
                         newPostBtn.CssClass = "newPostActive";
                         TreeListDataItem parentPost = itm.ParentItem;
                         parentPost.IsChildInserted = true;
                         DebateList.Rebind();
-                   /* }*/
+                    }
 
                 }
             }
@@ -662,11 +662,20 @@ namespace DotNetNuke.Modules.uDebate_Discussion
                 conn.Close();
             }
 
+            /* If a user posts to a thread we add him to the notification list*/
+            AddUserToNotified(Thread_ID);
+            notifyCheck.Checked = true;
+
             string fromAddress = "info@puzzledbypolicy.eu";
-            string subject = "Puzzledbypolicy - New post";
-            string body = "New post added at " + ConfigurationManager.AppSettings["DomainName"] + /*"/" +
-                    System.Threading.Thread.CurrentThread.CurrentCulture.Name +*/
-                    "/udebatediscussion.aspx?Thread=" + Thread_ID;
+            string subject = "PuzzledByPolicy - New Post";
+            string body = "Hi, <br /><br/>A new post has been submitted to the Puzzled by Policy thread \"<b>" +
+                         getDescription(Thread_ID) + "\"</b>.<br /> To see this post, visit " +
+                        ConfigurationManager.AppSettings["DomainName"] +/* "/" +
+                        System.Threading.Thread.CurrentThread.CurrentCulture.Name +*/
+                        "/udebatediscussion.aspx?Thread=" + Thread_ID + "<br /><br/>Kind Regards,<br /><br/>"+
+                        PortalSettings.PortalName + "<br /><a href='" + PortalSettings.DefaultPortalAlias +
+                        "'>" + PortalSettings.DefaultPortalAlias + "</a>" + "<br /><br />" +
+                        "<img src='http://" + PortalSettings.DefaultPortalAlias + "/Portals/0/pbp_logo270.jpg'/>";
 
             SendTokenizedBulkEmail mailer = new SendTokenizedBulkEmail();           
 
@@ -738,9 +747,15 @@ namespace DotNetNuke.Modules.uDebate_Discussion
 
             /* Send an email to all the subscribed users of this thread*/
             string subjectNotify = "PuzzledByPolicy - There is a new post in the thread you are following";
-            string bodyNotify = "Hi, <br /><br />A new post was added at " + ConfigurationManager.AppSettings["DomainName"]
-                    /*+ "/" + System.Threading.Thread.CurrentThread.CurrentCulture.Name */+
-                    "/udebatediscussion.aspx?Thread=" + Thread_ID;
+            string bodyNotify = "Hi, <br /><br/>A new post has been submitted to the Puzzled by Policy thread \"<b>" +
+                         getDescription(Thread_ID) + "\"</b>.<br /> To see this post, visit " +
+                        ConfigurationManager.AppSettings["DomainName"] + /*"/" +
+                        System.Threading.Thread.CurrentThread.CurrentCulture.Name +*/
+                        "/udebatediscussion.aspx?Thread=" + Thread_ID + "<br /><br/>Kind Regards,<br /><br/>"+
+                        PortalSettings.PortalName + "<br /><a href='" + PortalSettings.DefaultPortalAlias +
+                        "'>" + PortalSettings.DefaultPortalAlias + "</a>" + "<br /><br />" +
+                        "<img src='http://" + PortalSettings.DefaultPortalAlias + "/Portals/0/pbp_logo270.jpg'/>";
+
 
             string SQL_notified = "SELECT userID,userEmail FROM uDebate_Forum_Notifications where threadID=" + Thread_ID;
             try
@@ -755,9 +770,22 @@ namespace DotNetNuke.Modules.uDebate_Discussion
                         // Only send email to users different than the current one (the post writer)
                         if (UserId != Int32.Parse(row["userID"].ToString()))
                         {
-                            Entities.Users.UserInfo newUser = new Entities.Users.UserInfo();
-                            newUser.Email = row["userEmail"].ToString();
-                            notificationMailer.AddAddressedUser(newUser);
+                            int numRecs = 100;
+                            ArrayList findEmailinRegistered = Entities.Users.UserController.GetUsersByEmail(PortalId, row["userEmail"].ToString(), 0, 10, ref numRecs,false,false);
+
+                            //Check that the user is still registered
+                            if (findEmailinRegistered.Count > 0)
+                            {
+                                Entities.Users.UserInfo newUser = new Entities.Users.UserInfo();
+                                newUser.Email = row["userEmail"].ToString();
+                                notificationMailer.AddAddressedUser(newUser);
+                            }
+                            //if no, remove him from the list of notified users
+                            else
+                            {
+                                RemoveUserFromNotified(row["userEmail"].ToString());
+                             
+                            }
                         }                          
                     }
 
@@ -792,8 +820,8 @@ namespace DotNetNuke.Modules.uDebate_Discussion
 
         protected void ThreadDetails_DataBound(object sender, EventArgs e)
         {
-            /*if (Request.IsAuthenticated)
-            {*/
+            if (Request.IsAuthenticated)
+            {
                 string culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
                 newDiscussionBtn.Visible = true;
                 newDiscussionBtn.CssClass = "newDiscussion disc_" + culture;
@@ -827,7 +855,7 @@ namespace DotNetNuke.Modules.uDebate_Discussion
                                 /*"/language/" + culture + */"/uDebate.aspx";
                     }
                 }
-            /*}*/
+            }
             /* If status is not null then the thread has posts >0 so we update the fields accordingly */
             String Status = "";
             HiddenField hiddenstatus = (HiddenField)((DetailsView)sender).FindControl("Status");
@@ -973,5 +1001,27 @@ namespace DotNetNuke.Modules.uDebate_Discussion
 
             return sOut;
         }
+
+        /*Adds a user to the notification list for the given thread*/
+        private void AddUserToNotified(string threadID)
+        {
+            if (Request.IsAuthenticated)//make sure user is logged in
+            {
+                if (!checkUsedNotified(UserInfo.UserID.ToString(), threadID))
+                {                    
+                    String SQL = "INSERT INTO uDebate_Forum_Notifications (userID,threadID,userEmail,insertedOn) VALUES(" +
+                                        UserInfo.UserID + "," + Thread_ID + ",'" + UserInfo.Email + "',getdate())";
+                    ATC.Database.sqlExecuteCommand(SQL);
+                }
+            }
+        }
+
+        /*Removes the given email from the notification list*/
+        private void RemoveUserFromNotified(string userEmail)
+        {
+            String SQL = "DELETE FROM uDebate_Forum_Notifications WHERE userEmail='" + userEmail + "'";
+            ATC.Database.sqlExecuteCommand(SQL);
+        }
+
     }
 }
