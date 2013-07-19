@@ -223,7 +223,7 @@
     <value>If checked, you will receive an email when a new post is posted to this thread.</value>
   </data>
   <data name="UnpublishedBody.Text" xml:space="preserve">
-    <value>We are sorry to inform you that your post in {0} has been unpublished due to violation of the &lt;a href="http://join.puzzledbypolicy.eu/en-Gb/terms.aspx"&gt;Terms and Conditions&lt;/a&gt; of Puzzled by Policy. &lt;br /&gt;&lt;br /&gt; Thanks,&lt;br /&gt; The pbp team</value>
+    <value>We are sorry to inform you that your post in {0} has been unpublished due to violation of the &lt;a href="http://www.ogpireland.ie/privacy-policy/"&gt;privacy policy/&lt;/a&gt; of OGP Ireland. &lt;br /&gt;&lt;br /&gt; Thanks,&lt;br /&gt; The pbp team</value>
   </data>
   <data name="UnpublishedSubject.Text" xml:space="preserve">
     <value>Puzzled by Policy - Post unpublished</value>

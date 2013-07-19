@@ -70,7 +70,7 @@ namespace DotNetNuke.Modules.uDebate_Discussion
             ctlBreadcrump.CurrentModuleId = ModuleId.ToString();
             Page.MaintainScrollPositionOnPostBack = true;
 
-            /* uncomment for multilingual sites */
+            /* uncomment for multilingual sites */ 
             //LocalResourceFile = Localization.GetResourceFile(this, "View.ascx." + culture + ".resx");
 
             legendIssueImg.ImageUrl = "images/issue_icon.gif";
@@ -170,7 +170,7 @@ namespace DotNetNuke.Modules.uDebate_Discussion
                 DataRow lastPost = getLatestPostOfThread(Thread_ID);
 
                 if (lastPost != null)
-                    FindAndSelectItem(Convert.ToInt32(lastPost["ID"]));                
+                    FindAndSelectItem(Convert.ToInt32(lastPost["ID"]));               
             }
 
             /* Styling */
@@ -277,7 +277,7 @@ namespace DotNetNuke.Modules.uDebate_Discussion
                                         System.Threading.Thread.CurrentThread.CurrentCulture.Name +*/
                                         "/udebatediscussion.aspx?Thread=" + ATC.Tools.IntURLParam("Thread"));
 
-                    Mail.SendEmail("info@puzzledbypolicy", notifyEmail, Localization.GetString("UnpublishedSubject", LocalResourceFile),
+                    Mail.SendEmail("discussion@ogpireland.ie", notifyEmail, Localization.GetString("UnpublishedSubject", LocalResourceFile),
                                     notifyBody);
 
                     return;
@@ -666,9 +666,9 @@ namespace DotNetNuke.Modules.uDebate_Discussion
             AddUserToNotified(Thread_ID);
             notifyCheck.Checked = true;
 
-            string fromAddress = "info@puzzledbypolicy.eu";
-            string subject = "PuzzledByPolicy - New Post";
-            string body = "Hi, <br /><br/>A new post has been submitted to the Puzzled by Policy thread \"<b>" +
+            string fromAddress = "discussion@ogpireland.ie";
+            string subject = "OGP Ireland - New Post";
+            string body = "Hi, <br /><br/>A new post has been submitted to the OGP Ireland thread \"<b>" +
                          getDescription(Thread_ID) + "\"</b>.<br /> To see this post, visit " +
                         ConfigurationManager.AppSettings["DomainName"] +/* "/" +
                         System.Threading.Thread.CurrentThread.CurrentCulture.Name +*/
@@ -729,7 +729,7 @@ namespace DotNetNuke.Modules.uDebate_Discussion
             mailer.AddressMethod = DotNetNuke.Services.Mail.SendTokenizedBulkEmail.AddressMethods.Send_TO;
 
             Entities.Users.UserInfo senderUser = new Entities.Users.UserInfo();
-            senderUser.Email = "info@puzzledbypolicy.eu";
+            senderUser.Email = "discussion@ogpireland.ie";
 
             mailer.SendingUser = senderUser;
 
@@ -746,8 +746,8 @@ namespace DotNetNuke.Modules.uDebate_Discussion
             objThread.Start();
 
             /* Send an email to all the subscribed users of this thread*/
-            string subjectNotify = "PuzzledByPolicy - There is a new post in the thread you are following";
-            string bodyNotify = "Hi, <br /><br/>A new post has been submitted to the Puzzled by Policy thread \"<b>" +
+            string subjectNotify = "OGP Ireland - There is a new post in the thread you are following";
+            string bodyNotify = "Hi, <br /><br/>A new post has been submitted to the OGP Ireland thread \"<b>" +
                          getDescription(Thread_ID) + "\"</b>.<br /> To see this post, visit " +
                         ConfigurationManager.AppSettings["DomainName"] + /*"/" +
                         System.Threading.Thread.CurrentThread.CurrentCulture.Name +*/
@@ -794,7 +794,7 @@ namespace DotNetNuke.Modules.uDebate_Discussion
                     notificationMailer.AddressMethod = DotNetNuke.Services.Mail.SendTokenizedBulkEmail.AddressMethods.Send_TO;
 
                     Entities.Users.UserInfo sendingUser = new Entities.Users.UserInfo();
-                    sendingUser.Email = "info@puzzledbypolicy.eu";
+                    sendingUser.Email = "discussion@ogpireland.ie";
 
                     notificationMailer.SendingUser = sendingUser;
 

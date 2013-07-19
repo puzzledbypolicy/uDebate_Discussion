@@ -328,7 +328,8 @@
         <asp:Image ID="legendConImg" runat="server" /><asp:Label ID="legendConLbl" runat="server" />
         <asp:Image ID="legendCommentImg" runat="server" /><asp:Label ID="legendCommentLbl"
             runat="server" />
-        <a href="#mini-help" class="help" name="modal">
+     
+         <a href="#mini-help" class="help" name="modal">
             <asp:Label ID="helpLbl" runat="server" resourcekey="Help"></asp:Label></a>
     </div>
     <div class="dnnClear">

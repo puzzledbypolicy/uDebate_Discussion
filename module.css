@@ -739,6 +739,7 @@ a.threadCreator:link,a.threadCreator:visited, .more_link
     color: #343434;
     font-size: 11px;
     margin-top: 4px;
+    display:none; /* OGP*/
 }
 
 .legendLabel
