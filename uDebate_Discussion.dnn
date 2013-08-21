@@ -116,7 +116,19 @@
         </component>
         <component type="File">
           <files>
-            <basePath>DesktopModules/uDebate</basePath>
+            <basePath>DesktopModules/uDebate_Discussion</basePath>
+            <file>
+              <path>images</path>
+              <name>expand.png</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>print.png</name>
+            </file>
+            <file>
+              <path>Components</path>
+              <name>ToolsFile.Registered.PortalId.0.xml</name>
+            </file>            
             <file>
               <path>images/buttons</path>
               <name>btn_restart.png</name>
@@ -199,6 +211,14 @@
             </file>
             <file>
               <path>images/buttons</path>
+              <name>cancel.png</name>
+            </file>
+            <file>
+              <path>images/buttons</path>
+              <name>submit1.png</name>
+            </file>
+            <file>
+              <path>images/buttons</path>
               <name>new_discussion_el-GR.png</name>
             </file>
             <file>
@@ -236,6 +256,14 @@
             <file>
               <path>images/buttons</path>
               <name>new_discussion_it-IT_sel.png</name>
+            </file>
+            <file>
+              <path>images/buttons</path>
+              <name>new_discussion_en-US.png</name>
+            </file>
+            <file>
+              <path>images/buttons</path>
+              <name>new_discussion_en-US_sel.png</name>
             </file>
             <file>
               <path>images/buttons</path>
@@ -284,6 +312,10 @@
             <file>
               <path>images/buttons</path>
               <name>new_topic_sel.png</name>
+            </file>
+            <file>
+              <path>images/buttons</path>
+              <name>newPost.png</name>
             </file>
             <file>
               <path>images/buttons</path>
@@ -372,6 +404,158 @@
             <file>
               <path>images/buttons</path>
               <name>summary_sel.png</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>alter_icon.gif</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>alter_icon_off.gif</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>alter_icon_on.gif</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>answer_icon.gif</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>answer_icon_off.gif</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>answer_icon_on.gif</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>comments_icon.gif</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>comments_icon_off.gif</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>comments_icon_on.gif</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>con_icon.gif</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>con_icon_off.gif</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>con_icon_on.gif</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>con_icon_on.gif</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>header1a.gif</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>header1b.gif</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>hotness.png</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>issue_icon.gif</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>issue_icon_off.gif</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>issue_icon_on.gif</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>pro_icon.gif</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>pro_icon_off.gif</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>pro_icon_on.gif</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>postviewHeader.jpg</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>treeHeader.jpg</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>breadStart.png</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>breadStartEnd.png</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>breadThreadEnd.png</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>breadTopic.png</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>breadTopicEnd.png</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>postviewHeader.png</name>
+            </file>              
+            <file>
+              <path>images</path>
+              <name>stats.png</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>s_attachment.png</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>title940.png</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>topic.png</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>TopImage.png</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>top_back.png</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>treeHeader.png</name>
+            </file>
+            <file>
+              <path>images</path>
+              <name>users.png</name>
             </file>
           </files>
         </component>
