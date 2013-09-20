@@ -2,16 +2,16 @@
   <packages>
     <package name="uDebate_Discussion" type="Module" version="00.00.01">
       <friendlyName>uDebate_Discussion</friendlyName>
-      <description>DotNetNuke Corporation uDebate_Discussion module</description>
+      <description>ATC uDebate_Discussion module</description>
       <owner>
-        <name>DotNetNuke Corporation</name>
-        <organization>DotNetNuke Corporation</organization>
-        <url>http://www.dotnetnuke.com</url>
-        <email>training@dotnetnuke.com</email>
+        <name>ATC</name>
+        <organization>ATC</organization>
+        <url>http://www.atc.gr</url>
+        <email>info@atc.gr</email>
       </owner>
       <license>
 /*
-' Copyright (c) 2010  DotNetNuke Corporation
+' Copyright (c) 2010  ATC
 '  All rights reserved.
 ' 
 ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
